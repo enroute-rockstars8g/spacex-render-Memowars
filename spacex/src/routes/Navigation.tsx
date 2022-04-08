@@ -8,7 +8,7 @@ import {
 export const Navigation = () => {
   return (
     <BrowserRouter>
-      <div className="bg-indigo-500">
+      <div className="bg-indigo-500 main-layout">
         <nav>
           <h1>Logo aqui</h1>
           <ul>
