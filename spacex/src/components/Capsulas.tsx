@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getCapsula } from '../services/service';
-import { InfoCard } from './InfoCard';
+import { ICapsula } from '../interfaces/ICapsulas';
+import { InfoCard } from './InfoCardCapsules';
 
 const Capsulas = () => {
-  console.log(
-    getCapsula(1).then((res) => {
-      console.log(res);
-    })
-  );
+  const [capsulas, setCapsulas] = useState<ICapsula[]>([]);
+
+  const getCapsulas = async () => {
+    const recievedCapsules = await getCapsula();
+    setCapsulas(recievedCapsules);
+  };
+
+  useEffect(() => {
+    getCapsulas();
+  }, []);
 
   return (
     <div className="w-full h-full bg-black text-center">
@@ -15,8 +21,9 @@ const Capsulas = () => {
         Capsulas
       </h1>
       <div className="h-screen p-4 flex flex-wrap  gap-4 justify-center overflow-auto py-12">
-        <InfoCard />
-        <InfoCard />
+        {capsulas.map((capsula: ICapsula) => (
+          <InfoCard capsula={capsula} />
+        ))}
       </div>
     </div>
   );

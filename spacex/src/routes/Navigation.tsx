@@ -7,8 +7,8 @@ import {
 } from 'react-router-dom';
 import logo from '../assets/sxLogo.png';
 import Capsulas from '../components/Capsulas';
-import Falcon from '../components/Falcon';
-import { Lanzamientos } from '../components/Lanzamientos';
+import Falcon from '../components/Dragons';
+import { Lanzamientos } from '../components/Rockets';
 
 export const Navigation = () => {
   return (
@@ -32,30 +32,30 @@ export const Navigation = () => {
             </li>
             <li>
               <NavLink
-                to="/falcon"
+                to="/dragons"
                 className={({ isActive }) =>
                   isActive ? 'underline rounded-md' : ''
                 }
               >
-                Falcon
+                Dragons
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/lanzamientos"
+                to="/rockets"
                 className={({ isActive }) =>
                   isActive ? 'underline rounded-md' : ''
                 }
               >
-                Lanzamientos
+                Rockets
               </NavLink>
             </li>
           </ul>
         </nav>
         <Routes>
           <Route path="capsulas" element={<Capsulas />} />
-          <Route path="falcon" element={<Falcon />} />
-          <Route path="lanzamientos" element={<Lanzamientos />} />
+          <Route path="dragons" element={<Falcon />} />
+          <Route path="rockets" element={<Lanzamientos />} />
           <Route path="/*" element={<Navigate to="/capsulas" replace />} />
         </Routes>
       </div>
