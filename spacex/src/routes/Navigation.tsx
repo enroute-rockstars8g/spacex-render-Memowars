@@ -5,40 +5,58 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
+import logo from '../assets/sxLogo.png';
+import Capsulas from '../components/Capsulas';
+import Falcon from '../components/Dragons';
+import { Lanzamientos } from '../components/Rockets';
+
 export const Navigation = () => {
   return (
     <BrowserRouter>
-      <div className="bg-indigo-500">
-        <nav>
-          <h1>Logo aqui</h1>
-          <ul>
+      <div className="main-layout relative">
+        <nav className="overflow-hidden border-r bg-black border-sky-500 hidden sm:block">
+          <a href="https://www.spacex.com/">
+            <img src={logo} alt="imagen" className="p-2 pl-4"></img>
+          </a>
+          <hr className="mx-4" />
+          <ul className="mt-8">
             <li>
               <NavLink
-                to="/home"
+                to="/capsulas"
                 className={({ isActive }) =>
-                  isActive ? 'bg-gray-500 rounded-md' : ''
+                  isActive ? 'underline rounded-md ' : ''
                 }
               >
-                Home
+                Capsulas
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/users"
+                to="/dragons"
                 className={({ isActive }) =>
-                  isActive ? 'bg-gray-500 rounded-md' : ''
+                  isActive ? 'underline rounded-md' : ''
                 }
               >
-                Users
+                Dragons
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/rockets"
+                className={({ isActive }) =>
+                  isActive ? 'underline rounded-md' : ''
+                }
+              >
+                Rockets
               </NavLink>
             </li>
           </ul>
         </nav>
         <Routes>
-          <Route path="home" element={<div>Home</div>} />
-          <Route path="users" element={<div>Users</div>} />
-
-          <Route path="/*" element={<Navigate to="/home" replace />} />
+          <Route path="capsulas" element={<Capsulas />} />
+          <Route path="dragons" element={<Falcon />} />
+          <Route path="rockets" element={<Lanzamientos />} />
+          <Route path="/*" element={<Navigate to="/capsulas" replace />} />
         </Routes>
       </div>
     </BrowserRouter>
